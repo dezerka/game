@@ -38,9 +38,9 @@ class Enemy:
         self.img = pygame.image.load('images/enemyright.png') #28x18
         self.Bspeed = 3
     def move(self,plpos):
-        direction = pygame.Vector2(plpos[0] - self.pos[0], plpos[1] - self.pos[1])
+        '''direction = pygame.Vector2(plpos[0] - self.pos[0], plpos[1] - self.pos[1])
         direction.normalize()  # Normalize the vector
-        print(direction.move_towards(direction,5))
+        print(direction.move_towards(direction,5))'''
 
 
         self.pos = (self.pos[0] + (2 if plpos[0] > self.pos[0] else -2),self.pos[1] + (2 if plpos[1] > self.pos[1] else -2))
