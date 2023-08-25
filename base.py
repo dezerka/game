@@ -34,21 +34,19 @@ class Object:
 
 class Enemy:
     def __init__(self):
-        self.pos = (0,10)#(0,randint(0,801)) if randint(0,1) == 1 else (1200,randint(0,801))
+        self.pos = (0,randint(0,801)) if randint(0,1) == 1 else (1200,randint(0,801))
         self.img = pygame.image.load('images/enemyright.png') #28x18
         self.Bspeed = 3
     def move(self,plpos):
-        direction = pygame.Vector2(plpos[0] - self.pos[0], plpos[1] - self.pos[1])
-        direction.normalize()  # Normalize the vector
-        print(direction.move_towards(direction,5))
-
-
         self.pos = (self.pos[0] + (2 if plpos[0] > self.pos[0] else -2),self.pos[1] + (2 if plpos[1] > self.pos[1] else -2))
         
-        '''self.pos = (self.pos[0] + ((2*(direction.y/direction.x) if direction.y/direction.x <= 1 else 2) if direction.x != 0 else 2) if direction.x > 0 else -2,
-                     self.pos[0] + ((2*(direction.x/direction.y)if direction.x/direction.y <= 1 else 2) if direction.y != 0 else 2) if direction.y > 0 else -2)'''
 
-        #self.pos = (self.pos[0]+ direction.x * self.Bspeed,self.pos[1]+ direction.y * self.Bspeed)
+    def delite():
+        
+
+
+
+        pass
 
 
 pl = Object((600,600),'images\stop.png')   
@@ -72,7 +70,7 @@ def lable(txt,pos):
 TicsPerSec = 25
 attackCD = 0 
 attacking = False
-testenemy = Enemy()
+enemy_list = [Enemy(),Enemy(),Enemy(),Enemy()]
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -85,8 +83,9 @@ while True:
     lable(str(pl.pos),(10,10))
     lable(f'score: {0}',(600,10))
     screen.blit(pl.img,pl.pos)
-    screen.blit(testenemy.img,testenemy.pos)
-    testenemy.move(pl.pos)
+    for i in enemy_list:
+        i.move(pl.pos)
+        screen.blit(i.img,i.pos)
     if pygame.mouse.get_pressed()[0] and attackCD <= 0:
         attackCD = TicsPerSec
     if attackCD > TicsPerSec//2 :
