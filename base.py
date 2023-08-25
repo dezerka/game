@@ -42,10 +42,7 @@ class Enemy:
         
 
     def delite():
-        
-
-
-
+        #sdfsdfsdfsdfsdfsdfsdfdfdfsdf
         pass
 
 
